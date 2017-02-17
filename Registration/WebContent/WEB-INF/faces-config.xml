@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+    version="2.2">
+
+ 		<managed-bean>
+            <managed-bean-name>login_bean</managed-bean-name>
+            <managed-bean-class>model.Login</managed-bean-class>
+            <managed-bean-scope>request</managed-bean-scope>
+        </managed-bean>
+        
+    <navigation-rule>
+        <description>Login Page</description>
+        <from-view-id>/login.jsp</from-view-id>
+        <navigation-case>
+            <from-action>#{login_bean.checkValidUser}</from-action>
+            <from-outcome>valid</from-outcome>
+            <to-view-id>/mainmenu.jsp</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{login_bean.checkValidUser}</from-action>
+            <from-outcome>invalid</from-outcome>
+            <to-view-id>/login.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+     <navigation-rule>
+        <description>Register Page</description>
+        <from-view-id>/register.jsp</from-view-id>
+        <navigation-case>
+            <from-action>#{register_bean.register}</from-action>
+            <from-outcome>valid</from-outcome>
+            <to-view-id>/login.jsp</to-view-id>
+        </navigation-case>
+                <navigation-case>
+            <from-action>#{register_bean.register}</from-action>
+            <from-outcome>invalid</from-outcome>
+            <to-view-id>/register.jsp</to-view-id>
+        </navigation-case>
+      </navigation-rule>
+      
+     <navigation-rule>
+        <description>Drop Page</description>
+        <from-view-id>/dropcourse.jsp</from-view-id>
+        <navigation-case>
+            <from-action>#{drop_course.dropCourse}</from-action>
+            <from-outcome>valid</from-outcome>
+            <to-view-id>/dropcourse.jsp</to-view-id>
+        </navigation-case>
+                <navigation-case>
+            <from-action>#{drop_course.dropCourse}</from-action>
+            <from-outcome>invalid</from-outcome>
+            <to-view-id>/dropcourse.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+</faces-config>
